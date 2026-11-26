@@ -1,0 +1,341 @@
+/* ==============================
+   1. DESIGN TOKENS
+================================= */
+
+:root {
+    --primary: #6c63ff;
+    --secondary: #8b5cf6;
+    --background: #f4f6fb;
+    --surface: rgba(255, 255, 255, 0.85);
+    --text: #22223b;
+    --muted: #77778a;
+
+    --font-main: 'Segoe UI', Arial, sans-serif;
+
+    --space-sm: 10px;
+    --space-md: 20px;
+    --space-lg: 30px;
+
+    --radius: 16px;
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    --transition: 0.3s ease;
+}
+
+/* ==============================
+   2. DARK THEME
+================================= */
+
+body.dark {
+    --background: #151525;
+    --surface: rgba(38, 38, 60, 0.9);
+    --text: #ffffff;
+    --muted: #c0c0d0;
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ==============================
+   3. GLOBAL STYLING
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background var(--transition),
+                color var(--transition);
+}
+
+/* ==============================
+   4. HEADER
+================================= */
+
+.header {
+    width: 100%;
+    min-height: 75px;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+
+    background: var(--surface);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow);
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header h1 {
+    font-size: 26px;
+    color: var(--primary);
+}
+
+#themeToggle {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#themeToggle:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   5. SIDEBAR
+================================= */
+
+.sidebar {
+    position: fixed;
+    top: 95px;
+    left: 20px;
+    bottom: 70px;
+
+    width: 220px;
+    padding: var(--space-lg);
+
+    background: var(--surface);
+    backdrop-filter: blur(15px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.sidebar h2 {
+    margin-bottom: 25px;
+    color: var(--primary);
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    padding: 14px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.sidebar a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateX(5px);
+}
+
+/* ==============================
+   6. MAIN CONTENT
+================================= */
+
+.main-content {
+    margin-left: 270px;
+    padding: var(--space-lg);
+    min-height: calc(100vh - 145px);
+}
+
+.main-content h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.main-content > p {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+/* ==============================
+   7. RESPONSIVE DASHBOARD GRID
+================================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+}
+
+/* ==============================
+   8. DASHBOARD CARDS
+================================= */
+
+.card {
+    background: var(--surface);
+    backdrop-filter: blur(15px);
+
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+
+    border: 1px solid rgba(140, 140, 160, 0.15);
+
+    transition: transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.15);
+}
+
+.card h3 {
+    color: var(--muted);
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.card .number {
+    color: var(--primary);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card span {
+    color: #16a36a;
+    font-size: 14px;
+}
+
+/* ==============================
+   9. FOOTER
+================================= */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    background: var(--surface);
+}
+
+/* ==============================
+   10. TABLET - 768px
+================================= */
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 180px;
+        left: 12px;
+        padding: 18px;
+    }
+
+    .main-content {
+        margin-left: 215px;
+        padding: 20px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+}
+
+/* ==============================
+   11. MOBILE - 320px to 767px
+================================= */
+
+@media (max-width: 767px) {
+    .header {
+        padding: 15px;
+        min-height: 65px;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    #themeToggle {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .sidebar {
+        position: static;
+        width: auto;
+        margin: 12px;
+        padding: 12px;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .sidebar h2 {
+        width: 100%;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .sidebar a {
+        padding: 9px;
+        margin: 0;
+        font-size: 13px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 18px;
+    }
+
+    .main-content h2 {
+        font-size: 23px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .card .number {
+        font-size: 27px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 15px;
+    }
+}
+
+/* ==============================
+   12. SMALL MOBILE - 320px
+================================= */
+
+@media (max-width: 360px) {
+    .header h1 {
+        font-size: 17px;
+    }
+
+    .sidebar a {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .main-content {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+}
